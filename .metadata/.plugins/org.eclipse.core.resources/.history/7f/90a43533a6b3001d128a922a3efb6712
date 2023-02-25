@@ -1,0 +1,9 @@
+package com.codewithashu.user.constant;
+
+public class AppConstant {
+	
+	public static final String USER = "user";
+	
+	public static final String USER_ID = "userid";
+
+}

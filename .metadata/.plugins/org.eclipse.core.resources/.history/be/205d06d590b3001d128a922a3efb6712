@@ -1,0 +1,5 @@
+package com.codewithashu.user.model;
+
+public class User {
+
+}

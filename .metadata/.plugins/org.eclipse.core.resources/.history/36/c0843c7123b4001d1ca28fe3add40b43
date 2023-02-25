@@ -1,0 +1,25 @@
+package com.codewithashu.user.serviceimpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.codewithashu.user.model.UserInfo;
+import com.codewithashu.user.repository.UserInfoRepo;
+import com.codewithashu.user.service.UserInfoService;
+
+@Service
+public class UserInfoServiceImpl implements UserInfoService{
+	
+	
+	@Autowired
+	private UserInfoRepo userInfoRepo;
+
+	
+	
+	@Override
+	public boolean createUser(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

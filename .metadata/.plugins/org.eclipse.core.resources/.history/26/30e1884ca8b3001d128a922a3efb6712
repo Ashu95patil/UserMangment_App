@@ -1,0 +1,5 @@
+package com.codewithashu.user.payload;
+
+public class UserResponse {
+
+}

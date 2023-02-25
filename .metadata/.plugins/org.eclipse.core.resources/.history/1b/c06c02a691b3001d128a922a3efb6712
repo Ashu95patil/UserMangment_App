@@ -1,0 +1,5 @@
+package com.codewithashu.user.repository;
+
+public class UserRepo {
+
+}

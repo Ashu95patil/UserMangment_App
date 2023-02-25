@@ -1,0 +1,9 @@
+package com.codewithashu.user.service;
+
+import com.codewithashu.user.payload.UserInfoDto;
+
+public interface UserInfoService {
+	
+	UserInfoDto createUser(UserInfoDto userInfoDto);
+
+}

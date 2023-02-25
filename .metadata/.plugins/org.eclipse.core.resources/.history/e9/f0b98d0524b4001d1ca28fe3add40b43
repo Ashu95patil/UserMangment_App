@@ -1,0 +1,35 @@
+package com.codewithashu.user.serviceimpl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.codewithashu.user.payload.UserInfoDto;
+import com.codewithashu.user.repository.UserInfoRepo;
+import com.codewithashu.user.service.UserInfoService;
+
+@Service
+public class UserInfoServiceImpl implements UserInfoService{
+	
+	
+	@Autowired
+	private UserInfoRepo userInfoRepo;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+
+	@Override
+	public UserInfoDto createUser(UserInfoDto userInfoDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+
+}

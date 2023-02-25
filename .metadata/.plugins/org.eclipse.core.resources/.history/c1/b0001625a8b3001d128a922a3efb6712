@@ -1,0 +1,83 @@
+package com.codewithashu.user.serviceimpl;
+
+
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.codewithashu.user.constant.AppConstant;
+import com.codewithashu.user.exception.UserNotFoundException;
+import com.codewithashu.user.model.User;
+import com.codewithashu.user.payload.UserDto;
+import com.codewithashu.user.repository.UserRepo;
+import com.codewithashu.user.service.UserService;
+
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UserRepo userRepo;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+
+	
+	@Override
+	public UserDto createUser(UserDto userDto) {
+		
+		
+
+		User user = this.modelMapper.map(userDto, User.class);
+		
+		User saveUser = this.userRepo.save(user);
+		
+		
+		return this.modelMapper.map(saveUser, UserDto.class);
+	}
+
+	@Override
+	public UserDto updateUser(UserDto userDto, Integer userId) {
+
+		User user = this.userRepo.findById(userId).orElseThrow(()->new UserNotFoundException(AppConstant.USER, AppConstant.USER_ID, userId));
+		
+		user.setFirstName(userDto.getFirstName());
+		user.setLastName(userDto.getLastName());
+		user.setEmail(userDto.getEmail());
+		user.setPassword(userDto.getPassword());
+		user.setDob(userDto.getDob());
+		user.setGender(userDto.getGender());
+		user.setPhno(userDto.getPhno());
+		user.setCountry(userDto.getCountry());
+		user.setState(userDto.getState());
+		user.setCity(userDto.getCity());
+		
+		User updateUser= this.userRepo.save(user);
+		
+		
+		return this.modelMapper.map(updateUser, UserDto.class);
+	}
+
+	@Override
+	public void deleteUser(Integer userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public UserDto getuser(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserDto> getAllUser(Integer pageNumber, Integer pageSize, String sortByString, String sortDir) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

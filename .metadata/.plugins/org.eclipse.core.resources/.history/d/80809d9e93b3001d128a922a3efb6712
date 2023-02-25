@@ -1,0 +1,5 @@
+package com.codewithashu.user.config;
+
+public class SwaggerConfig {
+
+}
