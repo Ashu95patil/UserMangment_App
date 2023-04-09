@@ -3,6 +3,7 @@ package com.codewithashu.user.serviceimpl;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -14,9 +15,11 @@ import org.springframework.stereotype.Service;
 
 import com.codewithashu.user.constant.AppConstant;
 import com.codewithashu.user.exception.UserNotFoundException;
+import com.codewithashu.user.model.Department;
 import com.codewithashu.user.model.User;
 import com.codewithashu.user.payload.UserDto;
 import com.codewithashu.user.payload.UserResponse;
+import com.codewithashu.user.repository.DepartmentRepo;
 import com.codewithashu.user.repository.UserRepo;
 import com.codewithashu.user.service.UserService;
 
@@ -27,14 +30,23 @@ public class UserServiceImpl implements UserService {
 	private UserRepo userRepo;
 
 	@Autowired
+	private DepartmentRepo departmentRepo;
+
+	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
-	public UserDto createUser(UserDto userDto) {
+	public UserDto createUser(UserDto userDto, Integer dep_id) {
+
+		Department dept = departmentRepo.findById(dep_id)
+				.orElseThrow(() -> new UserNotFoundException(AppConstant.DEPARTMENT, AppConstant.DEP_ID, dep_id));
 
 		userDto.setIsactive(AppConstant.YES);
 
 		User user = this.modelMapper.map(userDto, User.class);
+
+		user.setDepartments(dept);
+		
 
 		User saveUser = this.userRepo.save(user);
 

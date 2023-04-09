@@ -1,9 +1,0 @@
-package com.codewithashu.user.service;
-
-import com.codewithashu.user.model.UserInfo;
-
-public interface UserInfoService {
-	
-	boolean createUser(UserInfo userInfo);
-
-}

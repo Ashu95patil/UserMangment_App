@@ -1,5 +1,0 @@
-package com.codewithashu.user.repository;
-
-public interface UserInfoRepo {
-
-}

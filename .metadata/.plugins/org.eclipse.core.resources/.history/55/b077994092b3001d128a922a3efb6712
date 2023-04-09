@@ -1,5 +1,0 @@
-package com.codewithashu.user.service;
-
-public interface UserService {
-
-}

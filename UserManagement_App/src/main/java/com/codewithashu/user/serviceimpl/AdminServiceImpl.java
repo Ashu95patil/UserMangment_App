@@ -2,12 +2,12 @@ package com.codewithashu.user.serviceimpl;
 
 import org.modelmapper.ModelMapper;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.codewithashu.user.model.Admin;
-import com.codewithashu.user.payload.AdminDto;
 import com.codewithashu.user.repository.AdminRepo;
 import com.codewithashu.user.service.AdminService;
 
@@ -26,13 +26,17 @@ public class AdminServiceImpl implements AdminService{
 	
 
 	@Override
-	public AdminDto createUser(AdminDto adminDto) {
+	public Admin createUser(Admin admin) {
 
-		Admin admin = this.modelMapper.map(adminDto, Admin.class);
+			
+		admin.setPassword(passwordEncoder.encode(admin.getPassword()));
 		
-		Admin saveUserInfo = this.adminRepo.save(admin);
+	Admin save = this.adminRepo.save(admin);
+	
+	return save;
 		
-		return this.modelMapper.map(saveUserInfo, AdminDto.class);
+		
+		
 	}
 
 	

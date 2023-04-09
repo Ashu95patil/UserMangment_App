@@ -2,6 +2,7 @@ package com.codewithashu.user.security;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,47 +16,45 @@ import com.codewithashu.user.model.Admin;
 @SuppressWarnings("serial")
 public class UserInfoDetails implements UserDetails {
 
+            Admin admin =new Admin();
+	
+	
 
-	private String email;
-	
-	private String password;
-	
-	private List<GrantedAuthority> authorities;
-	
-	
-	
-	
-	
+
+
 	public UserInfoDetails(Admin admin) {
-		super();
-		
-		email = admin.getEmail();
-		
-		password = admin.getPassword();
-		
-		authorities = Arrays.stream(admin.getRole().split(",")).map(SimpleGrantedAuthority::new)
-				.collect(Collectors.toList());
-		
-	}
+				super();
+				this.admin = admin;
+			}
 
-	
+
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return authorities;
+		
+		HashSet<SimpleGrantedAuthority> set=new HashSet<>();
+		set.add(new SimpleGrantedAuthority(this.admin.getRole()));
+		return set;
+		
 	}
+
+
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return password;
+		return this.admin.getPassword();
 	}
+
+
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return email;
+		return this.admin.getEmail();
 	}
+
+
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -63,11 +62,15 @@ public class UserInfoDetails implements UserDetails {
 		return true;
 	}
 
+
+
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+
 
 	@Override
 	public boolean isCredentialsNonExpired() {
@@ -75,10 +78,14 @@ public class UserInfoDetails implements UserDetails {
 		return true;
 	}
 
+
+
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
+	
+	
 }

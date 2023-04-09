@@ -1,11 +1,13 @@
 package com.codewithashu.user.controller;
 
+import javax.security.sasl.AuthenticationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codewithashu.user.constant.AppConstant;
+import com.codewithashu.user.model.Admin;
 import com.codewithashu.user.payload.ApiResponse;
 import com.codewithashu.user.payload.UserDto;
 import com.codewithashu.user.payload.UserResponse;
@@ -24,18 +27,23 @@ import com.codewithashu.user.service.UserService;
 
 @RestController
 @RequestMapping("/api")
+
 public class UserController {
 
+	
+	
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/users")
-	@PreAuthorize("hasAuthorize('role_admin')")
+	@PostMapping("/users/{dep_id}")
+	//@PreAuthorize("hasRole('admin')")
 
-	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto , @PathVariable Integer dep_id)  {
+		
 
-		UserDto createUser = this.userService.createUser(userDto);
+		UserDto createUser = this.userService.createUser(userDto,dep_id);
 		return new ResponseEntity<UserDto>(createUser, HttpStatus.CREATED);
+
 
 	}
 

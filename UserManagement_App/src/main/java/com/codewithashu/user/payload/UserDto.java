@@ -1,11 +1,18 @@
 package com.codewithashu.user.payload;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.codewithashu.user.model.Department;
+import com.codewithashu.user.model.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -54,6 +61,9 @@ public class UserDto {
 	private String city;
 	
 	private String isactive;
+	
+	private List<User> user;
+
 
 
 

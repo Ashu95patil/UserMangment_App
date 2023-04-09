@@ -1,9 +1,9 @@
 package com.codewithashu.user.service;
 
-import com.codewithashu.user.payload.AdminDto;
+import com.codewithashu.user.model.Admin;
 
 public interface AdminService {
 	
-	AdminDto createUser(AdminDto adminDto);
+	Admin createUser(Admin admin);
 
 }

@@ -1,5 +1,0 @@
-package com.codewithashu.user.security;
-
-public class UserInfoUserDetailsService extends UserInfoDetails {
-
-}

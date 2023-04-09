@@ -7,7 +7,7 @@ import com.codewithashu.user.payload.UserResponse;
 
 public interface UserService {
 
-	UserDto createUser(UserDto userDto);
+	UserDto createUser(UserDto userDto,Integer dep_id);
 
 	UserDto updateUser(UserDto userDto, Integer userId);
 

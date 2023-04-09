@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="GitSelectRepositoryPage.lastRepository" value="C:\Users\patil\git\Emailsender\.git"/>
 	<list key="CommitDialog.authorValues">
 		<item value="Ashu24patil &lt;patilashwini566@gmail.com&gt;"/>
 	</list>
@@ -7,14 +8,17 @@
 		<item value="Ashu24patil &lt;patilashwini566@gmail.com&gt;"/>
 	</list>
 	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
 		<item value="git.eclipse.org"/>
 		<item value="github.com"/>
-		<item value="bitbucket.org"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/rathoreisha/Emailsender.git"/>
 	</list>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
 		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
-		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="200,200"/>
-		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="sortItemState" value="false"/>
 	</section>
 	<section name="GitCommitMessageComponent">

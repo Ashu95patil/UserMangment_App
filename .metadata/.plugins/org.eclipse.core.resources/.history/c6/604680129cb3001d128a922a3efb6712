@@ -1,5 +1,0 @@
-package com.codewithashu.user.exception;
-
-public class GlobalExceptionHandler {
-
-}

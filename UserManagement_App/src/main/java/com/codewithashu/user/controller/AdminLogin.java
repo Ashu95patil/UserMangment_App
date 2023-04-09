@@ -2,6 +2,7 @@ package com.codewithashu.user.controller;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codewithashu.user.payload.AdminDto;
+import com.codewithashu.user.model.Admin;
 import com.codewithashu.user.service.AdminService;
 
 @RestController
@@ -21,12 +22,12 @@ public class AdminLogin {
 	private AdminService userInfoService;
 	
 	
-	@PostMapping("/userlogin")
-	public ResponseEntity<AdminDto> createUserlogin(@Valid @RequestBody AdminDto userInfoDto)
+	@PostMapping("/adminlogin")
+	public ResponseEntity<Admin> createUserlogin(@Valid @RequestBody Admin admin)
 	{
-		AdminDto createuserlogin = this.userInfoService.createUser(userInfoDto);
+		Admin createuserlogin = this.userInfoService.createUser(admin);
 		
-		return new ResponseEntity<AdminDto>(createuserlogin,HttpStatus.CREATED);
+		return new ResponseEntity<Admin>(createuserlogin,HttpStatus.CREATED);
 	}
 	
 	
